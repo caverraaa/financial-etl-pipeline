@@ -8,9 +8,8 @@ def extract_transactions(filepath):
 
 def profile_dataframe(df):
     """
-    Checking correctness of the data set and the data types of the columns
-    Checking on possible missing values and adequacy of data and column data types
-
+    Check correctness and adequacy of the dataset
+    
     """
 
     print("--- Shape ---")
@@ -23,16 +22,16 @@ def profile_dataframe(df):
     print(df.isnull().sum())
     
     print("\n--- TransactionType Counts ---")
-    print(df['TransactionType'].value_counts())
+    print(df["TransactionType"].value_counts())
     
     print("\n--- Channel Counts ---")
-    print(df['Channel'].value_counts())
+    print(df["Channel"].value_counts())
     
     print("\n--- CustomerOccupation Counts ---")
-    print(df['CustomerOccupation'].value_counts())
+    print(df["CustomerOccupation"].value_counts())
 
     print("\n--- CustomerAge Range ---")
-    print(df['CustomerAge'].describe())
+    print(df["CustomerAge"].describe())
 
 
 

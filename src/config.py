@@ -1,0 +1,7 @@
+FILE_PATH = "data/bank_transactions_data_2.csv"
+
+#Business logic constants
+HIGH_AMOUNT_THRESHOLD = 500.0
+HIGH_LOGIN_ATTEMPTS_THRESHOLD = 3
+HIGH_DURATION_THRESHOLD = 200
+SUSPICIOUS_CHANNELS = ["ATM"]

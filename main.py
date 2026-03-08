@@ -1,14 +1,19 @@
 import csv
+from src.extract import extract_transactions, profile_dataframe
 
-path = 'data/bank_transactions_data_2.csv' 
-with open(path, mode='r') as f:
-    reader = csv.reader(f)
+FILE_PATH = 'data/bank_transactions_data_2.csv'
 
-    header = next(reader)
-    print(f"Columns: {header}")
+raw_df = extract_transactions(FILE_PATH)
 
-    total_rows = sum(1 for _ in reader)
-    print(f"Total rows {total_rows}")
+profile_dataframe(raw_df)
+
+print(raw_df.head(5))
+
+
+    
+
+
+    
 
     
 

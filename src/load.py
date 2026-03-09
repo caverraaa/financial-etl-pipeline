@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
 import psycopg2
+import pandas as pd
 
 def get_engine():
     
@@ -56,3 +57,12 @@ def verify_load(conn):
     print(f"High-risk transactions: {high_risk_rows}")
     
     cur.close()
+
+def run_query(engine, sql, label):
+    df = pd.read_sql_query(sql, engine)
+
+    report_name = f"reports/{label.replace(' ', '_')}.csv"
+    df.to_csv(report_name, index=False)
+
+    print(f"\n--- Report saved: {report_name} ---")
+    print(df.head(5).to_string())

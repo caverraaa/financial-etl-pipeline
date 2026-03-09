@@ -1,4 +1,5 @@
-FILE_PATH = "data/bank_transactions_data_2.csv"
+DATASET_PATH = "data/bank_transactions_data_2.csv"
+SQL_PATH = "src/queries.sql"
 
 #Business logic constants
 HIGH_AMOUNT_THRESHOLD = 500.0

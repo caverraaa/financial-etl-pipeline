@@ -1,8 +1,15 @@
 # ETL Pipeline — Bank Transaction Risk Analysis
 
-This project implements a full ETL pipeline that ingests a bank transactions dataset from Kaggle, cleans and enriches it with risk scoring logic, loads it into a PostgreSQL database, and runs SQL-based analytical queries. The output is a set of CSV reports covering transaction volume by channel, high-risk transaction detection, repeat suspicious activity, and above-average transaction filtering.
+Bank transactions contain patterns — unusual login attempts, high-value 
+transfers, ATM anomalies — that compliance teams use to flag suspicious 
+activity. This pipeline automates that process: it ingests a real dataset 
+of 2,500+ transactions, engineers risk features, loads the results into 
+PostgreSQL, and produces analytical reports in CSV format.
+
+**Dataset:** [Bank Transaction Dataset for Fraud Detection](https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection/data) — Kaggle
 
 ---
+
 
 ## Pipeline Architecture
 

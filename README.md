@@ -11,6 +11,7 @@ PostgreSQL, and produces analytical reports in CSV format.
 ---
 
 
+
 ## Pipeline Architecture
 
 ```
@@ -55,6 +56,18 @@ CSV (Kaggle) → Extract (pandas) → Transform (clean + enrich) → Load (Postg
 
 ATM has the highest total transaction volume at $256,331.43.
 
+**Q2 — High-risk transactions (risk_label = high or critical), ordered by risk score and amount:**
+
+328 transactions flagged as high or critical risk. Top results:
+
+| TransactionID | AccountID | TransactionAmount | Channel | LoginAttempts | TransactionDuration | risk_score | risk_label |
+|---|---|---|---|---|---|---|---|
+| TX000455 | AC00264 | 611.11 | ATM | 4 | 282 | 4 | critical |
+| TX001498 | AC00018 | 1228.81 | ATM | 1 | 254 | 3 | critical |
+| TX000275 | AC00454 | 1176.28 | ATM | 5 | 174 | 3 | critical |
+| TX001797 | AC00146 | 1135.80 | ATM | 1 | 250 | 3 | critical |
+| TX001013 | AC00257 | 963.77 | ATM | 1 | 248 | 3 | critical |
+
 **Q3 — Accounts with repeat suspicious activity (risk_score ≥ 2, more than one occurrence):**
 
 73 accounts were identified with repeat suspicious transactions.
@@ -68,8 +81,9 @@ ATM has the highest total transaction volume at $256,331.43.
 ## Project Structure
 
 ```
-etl-pipeline/
+financial-etl-pipeline/
 ├── data/                          ← not committed, download from Kaggle
+├── reports/                       ← auto-generated, not committed
 ├── src/
 │   ├── config.py
 │   ├── extract.py
@@ -78,6 +92,7 @@ etl-pipeline/
 │   └── queries.sql
 ├── main.py
 ├── requirements.txt
+├── README.md
 ├── .env                           ← not committed, see .env.example
 └── .env.example
 ```
@@ -88,8 +103,8 @@ etl-pipeline/
 
 1. Clone the repository:
    ```
-   git clone https://github.com/caverraaa/etl-pipeline.git
-   cd etl-pipeline
+   git clone https://github.com/caverraaa/financial-etl-pipeline.git
+   cd financial-etl-pipeline
    ```
 
 2. Create and activate a virtual environment:

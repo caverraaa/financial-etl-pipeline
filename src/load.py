@@ -59,6 +59,7 @@ def verify_load(conn):
     cur.close()
 
 def run_query(engine, sql, label):
+    os.makedirs("reports", exist_ok=True)
     df = pd.read_sql_query(sql, engine)
 
     report_name = f"reports/{label.replace(' ', '_')}.csv"

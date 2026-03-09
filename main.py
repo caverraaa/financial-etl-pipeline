@@ -25,7 +25,7 @@ with open(SQL_PATH, "r") as f:
 queries = sql_content.split("-- split")
 
 for i, sql in enumerate(queries, 1):
-    if sql.strip():  # Пропускаем пустые строки
+    if sql.strip(): 
         run_query(engine, sql, f"Query #{i}")
 
 

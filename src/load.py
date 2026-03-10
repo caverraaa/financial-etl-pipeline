@@ -1,10 +1,12 @@
 from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
 from dotenv import load_dotenv
 import os
 import psycopg2
+import psycopg2.extensions
 import pandas as pd
 
-def get_engine():
+def get_engine() -> Engine:
     
     """Get engine for automatic table managing"""
 
@@ -18,7 +20,7 @@ def get_engine():
 
 
 
-def get_connection():
+def get_connection() -> psycopg2.extensions.connection:
 
     """Establish connection to the database."""
 
@@ -33,14 +35,14 @@ def get_connection():
 
 
 
-def load_transactions(df, engine):
+def load_transactions(df: pd.DataFrame, engine: Engine) -> None:
     n_rows = df.shape[0]
     df.to_sql('transactions', engine, if_exists='replace', index=False)
     print(f"Loaded {n_rows} rows into 'transactions' table")
 
 
 
-def verify_load(conn):
+def verify_load(conn: psycopg2.extensions.connection) -> None:
     """
     Verify data integrity by running SQL queries against the database.
     """
@@ -58,7 +60,7 @@ def verify_load(conn):
     
     cur.close()
 
-def run_query(engine, sql, label):
+def run_query(engine: Engine, sql: str, label: str) -> None:
     os.makedirs("reports", exist_ok=True)
     df = pd.read_sql_query(sql, engine)
 

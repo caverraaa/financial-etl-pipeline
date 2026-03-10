@@ -1,12 +1,12 @@
 import pandas as pd
 
 
-def extract_transactions(filepath):
+def extract_transactions(filepath: str) -> pd.DataFrame:
     df = pd.read_csv(filepath)
     return df
 
 
-def profile_dataframe(df):
+def profile_dataframe(df: pd.DataFrame) -> None:
     """
     Check correctness and adequacy of the dataset
     

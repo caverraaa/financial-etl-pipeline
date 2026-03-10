@@ -1,7 +1,7 @@
 import pandas as pd
 from src.config import HIGH_AMOUNT_THRESHOLD, HIGH_DURATION_THRESHOLD, HIGH_LOGIN_ATTEMPTS_THRESHOLD, SUSPICIOUS_CHANNELS
 
-def clean_data(df):
+def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     Remove invalid records and standardize data types for downstream processing.
 
@@ -35,7 +35,7 @@ def clean_data(df):
     return df
 
 
-def enrich_data(df):
+def enrich_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     Calculate risk metrics and assign a risk category to each transaction.
 

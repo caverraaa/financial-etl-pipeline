@@ -2,8 +2,10 @@ import pandas as pd
 
 
 def extract_transactions(filepath: str) -> pd.DataFrame:
-    df = pd.read_csv(filepath)
-    return df
+    try:
+        return pd.read_csv(filepath)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Dataset not found at '{filepath}'.")
 
 
 def profile_dataframe(df: pd.DataFrame) -> None:

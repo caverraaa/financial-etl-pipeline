@@ -25,13 +25,16 @@ def get_connection() -> psycopg2.extensions.connection:
     """Establish connection to the database."""
 
     load_dotenv()
-    return psycopg2.connect(
-        host=os.environ["DB_HOST"],
-        dbname=os.environ["DB_NAME"],
-        user=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"],
-        port=os.environ["DB_PORT"]
-    )
+    try:
+        return psycopg2.connect(
+            host=os.environ["DB_HOST"],
+            dbname=os.environ["DB_NAME"],
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASSWORD"],
+            port=os.environ["DB_PORT"]
+        )
+    except psycopg2.OperationalError as e:
+        raise ConnectionError(f"Could not connect to PostgreSQL: {e}")
 
 
 

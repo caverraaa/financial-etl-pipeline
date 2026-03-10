@@ -11,12 +11,15 @@ def get_engine() -> Engine:
     """Get engine for automatic table managing"""
 
     load_dotenv()
-    user = os.environ["DB_USER"]
-    password = os.environ["DB_PASSWORD"]
-    host = os.environ["DB_HOST"]
-    port = os.environ["DB_PORT"]
-    db = os.environ["DB_NAME"]
-    return create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}")
+    try:
+        user = os.environ["DB_USER"]
+        password = os.environ["DB_PASSWORD"]
+        host = os.environ["DB_HOST"]
+        port = os.environ["DB_PORT"]
+        db = os.environ["DB_NAME"]
+        return create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}")
+    except KeyError as e:
+        raise KeyError(f"Missing environment variable: {e}.")
 
 
 

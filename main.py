@@ -1,13 +1,17 @@
-from src.config import DATASET_PATH, SQL_PATH 
+from src.config import DATASET_PATH, SQL_PATH
 from src.extract import extract_transactions, profile_dataframe
 from src.transform import clean_data, enrich_data
 from src.load import get_engine, get_connection, load_transactions, verify_load, run_query
+from src.data_quality import generate_dq_report
+from src.export_powerbi import export_powerbi
 
 
 
 df_raw = extract_transactions(DATASET_PATH)
 df_clean = clean_data(df_raw)
 df_enriched = enrich_data(df_clean)
+dq_report = generate_dq_report(df_raw, df_clean)
+
 
 print("\n")
 print("Transactions with risk_score >= 3")
@@ -25,8 +29,10 @@ with open(SQL_PATH, "r") as f:
 queries = sql_content.split("-- split")
 
 for i, sql in enumerate(queries, 1):
-    if sql.strip(): 
+    if sql.strip():
         run_query(engine, sql, f"Query #{i}")
+
+export_powerbi(df_enriched, engine, dq_report)
 
 
 

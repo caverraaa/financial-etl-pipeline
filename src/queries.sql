@@ -43,3 +43,30 @@ SELECT *
 FROM transactions
 WHERE "TransactionAmount" > (SELECT AVG("TransactionAmount") FROM transactions)
 ORDER BY "TransactionAmount" ASC;
+
+-- split
+
+-- Q5: Monthly transaction volume trend
+
+SELECT
+    DATE_TRUNC('month', "TransactionDate") AS month,
+    COUNT(*) AS transaction_count,
+    ROUND(SUM("TransactionAmount")::numeric, 2) AS total_amount,
+    ROUND(AVG("TransactionAmount")::numeric, 2) AS avg_amount
+FROM transactions
+GROUP BY month
+ORDER BY month;
+
+-- split
+
+-- Q6: Volume and risk breakdown by channel
+
+SELECT
+    "Channel",
+    risk_label,
+    COUNT(*) AS transaction_count,
+    ROUND(SUM("TransactionAmount")::numeric, 2) AS total_amount,
+    ROUND(AVG("TransactionAmount")::numeric, 2) AS avg_amount
+FROM transactions
+GROUP BY "Channel", risk_label
+ORDER BY "Channel", risk_label;

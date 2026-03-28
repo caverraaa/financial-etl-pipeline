@@ -34,7 +34,7 @@ CSV (Kaggle) → Extract (pandas) → Transform (clean + enrich) → Load (Postg
 
 Interactive dashboard built on top of the pipeline output, visualizing transaction volumes, risk distribution, and monthly trends across 2,500+ transactions.
 
-: ![Power BI Dashboard](assets/res.jpg)
+![Power BI Dashboard](assets/res.jpg)
 
 **Visuals:**
 

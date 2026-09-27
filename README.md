@@ -2,8 +2,8 @@
 
 Bank transactions contain patterns — unusual login attempts, high-value
 transfers, ATM anomalies — that compliance teams use to flag suspicious
-activity. This pipeline automates that process: it ingests a real dataset
-of 2,500+ transactions, engineers risk features, loads the results into
+activity. This pipeline automates that process: it ingests 2,500+ transactions
+from a public dataset, engineers risk features, loads the results into
 PostgreSQL, and produces analytical reports in CSV format.
 
 **Dataset:** [Bank Transaction Dataset for Fraud Detection](https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection/data) — Kaggle
@@ -35,6 +35,8 @@ CSV (Kaggle) → Extract (pandas) → Transform (clean + enrich) → Load (Postg
 Interactive dashboard built on top of the pipeline output, visualizing transaction volumes, risk distribution, and monthly trends across 2,500+ transactions.
 
 ![Power BI Dashboard](assets/res.jpg)
+
+Power BI report: dashboard/etl_data.pbix
 
 **Visuals:**
 
